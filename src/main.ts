@@ -1,7 +1,7 @@
 /** @notice Library imports */
 import { NestFactory } from "@nestjs/core";
 /// Local imports
-import { AppModule } from "./application";
+import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

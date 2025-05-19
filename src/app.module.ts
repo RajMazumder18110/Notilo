@@ -3,7 +3,9 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 /// Local imports
 import { validate } from "@app/config/env/env.schema";
-import { EnvironmentService } from "@app/config/env/env.service";
+import { UsersModule } from "@app/users/users.module";
+import { DatabaseModule } from "@app/config/db/db.module";
+import { EnvironmentModule } from "@app/config/env/env.module";
 
 @Module({
   imports: [
@@ -11,7 +13,9 @@ import { EnvironmentService } from "@app/config/env/env.service";
       validate,
       isGlobal: true,
     }),
+    EnvironmentModule,
+    DatabaseModule,
+    UsersModule,
   ],
-  providers: [EnvironmentService],
 })
 export class AppModule {}
