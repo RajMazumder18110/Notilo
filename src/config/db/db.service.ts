@@ -2,7 +2,7 @@
 import { Injectable } from "@nestjs/common";
 import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 /// Local imports
-import * as schema from "@app/common/entities";
+import * as schema from "./db.schema";
 import { EnvironmentService } from "@app/config/env/env.service";
 
 @Injectable()

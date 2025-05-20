@@ -2,13 +2,9 @@
 import { eq, ilike } from "drizzle-orm";
 import { Injectable } from "@nestjs/common";
 /// Local imports
-import {
-  Blog,
-  BlogWithAuthor,
-  NewBlogPayload,
-} from "@app/common/entities/types/blogs.type";
-import { blogs } from "@app/common/entities";
+import { blogs } from "./blogs.entity";
 import { DatabaseService } from "@app/config/db/db.service";
+import { Blog, BlogWithAuthor, NewBlogPayload } from "./blogs.type";
 
 @Injectable()
 export class BlogsRepository {

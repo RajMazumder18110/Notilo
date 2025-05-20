@@ -7,8 +7,8 @@ import {
   FindOneUser,
   NewUserPayload,
   UserWithoutPassword,
-} from "@app/common/entities/types/users.type";
-import { users } from "@app/common/entities";
+} from "@app/users/users.type";
+import { users } from "./users.entity";
 import { DatabaseService } from "@app/config/db/db.service";
 
 @Injectable()

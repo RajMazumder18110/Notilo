@@ -9,7 +9,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 /// Local imports
-import { users } from "./users.entity";
+import { users } from "@app/users/users.entity";
 
 export const blogs = pgTable("blogs", {
   /// Core fields

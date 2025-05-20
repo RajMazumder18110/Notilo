@@ -9,7 +9,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 /// Local imports
-import { blogs } from "./blogs.entity";
+import { blogs } from "@app/blogs/blogs.entity";
 
 export const users = pgTable(
   "users",

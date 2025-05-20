@@ -1,6 +1,6 @@
 /** @notice Local imports */
-import { blogs } from "@app/common/entities";
-import { UserWithoutPassword } from "./users.type";
+import { blogs } from "./blogs.entity";
+import { UserWithoutPassword } from "@app/users/users.type";
 
 export type Blog = typeof blogs.$inferSelect;
 export type BlogOmittedAuthor = Omit<Blog, "author">;
