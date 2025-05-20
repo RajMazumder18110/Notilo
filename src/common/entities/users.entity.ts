@@ -16,6 +16,10 @@ export const users = pgTable(
     email: varchar({ length: 100 }).notNull().unique(),
     password: text().notNull(),
 
+    name: varchar({ length: 50 }).notNull(),
+    username: varchar({ length: 50 }).notNull().unique(),
+    bio: varchar({ length: 255 }),
+
     /// Timestamps
     createdAt: timestamp().notNull().defaultNow(),
     updatedAt: timestamp()
@@ -23,9 +27,8 @@ export const users = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
   },
-  (table) => [uniqueIndex("userEmailUniqueIndex").on(table.email)]
+  (table) => [
+    uniqueIndex("userEmailUniqueIndex").on(table.email),
+    uniqueIndex("userUsernameUniqueIndex").on(table.username),
+  ]
 );
-
-/// Types
-export type User = typeof users.$inferSelect;
-export type NewUserPayload = Pick<User, "email" | "password">;
