@@ -4,7 +4,7 @@ import {
   ConflictException,
   UnauthorizedException,
 } from "@nestjs/common";
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
 import { JwtService } from "@nestjs/jwt";
 /// Local imports
 import { JWTPayload } from "./auth.types";
@@ -21,7 +21,10 @@ export class AuthService {
   ) {}
 
   async signUp(payload: NewUserPayload) {
-    const { email, password, name, username } = payload;
+    let { email, password, name, username } = payload;
+    email = email.toLowerCase();
+    username = username.toLowerCase().trim();
+
     /// Validating email and username
     let user = await this.userRepository.validateSave(email, username);
     if (user) {
