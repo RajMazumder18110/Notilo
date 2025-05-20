@@ -1,0 +1,17 @@
+services:
+  notilo-postgres:
+    image: postgres:alpine
+    container_name: notilo-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: notilo
+      POSTGRES_USER: notilo
+      POSTGRES_PASSWORD: notilo
+    networks:
+      - notilo-network
+    ports:
+      - 5432:5432
+
+networks:
+  notilo-network:
+    driver: bridge
