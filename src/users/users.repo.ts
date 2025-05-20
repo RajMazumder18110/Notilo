@@ -43,10 +43,10 @@ export class UsersRepository {
   }
 
   async save(payload: NewUserPayload): Promise<Pick<User, "id">> {
-    const { email, password, name, username, bio } = payload;
+    const { email, password, name, username } = payload;
     const [user] = await this.dbService.database
       .insert(users)
-      .values({ email, password, name, username, bio })
+      .values({ email, password, name, username })
       .returning({ id: users.id });
 
     return user;

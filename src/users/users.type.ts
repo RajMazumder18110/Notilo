@@ -4,7 +4,10 @@ import { BlogOmittedAuthor } from "@app/blogs/blogs.type";
 
 export type User = typeof users.$inferSelect;
 export type UserWithoutPassword = Omit<User, "password">;
-export type NewUserPayload = Omit<User, "id" | "createdAt" | "updatedAt">;
+export type NewUserPayload = Omit<
+  User,
+  "id" | "bio" | "createdAt" | "updatedAt"
+>;
 
 export type FindOneUser<T extends boolean> = T extends true | undefined
   ? User | undefined
