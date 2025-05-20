@@ -24,9 +24,11 @@ export class UsersRepository {
         eq(users.email, emailOrUsername),
         eq(users.username, emailOrUsername)
       ),
-      columns: {
-        password: includePassword ?? false,
-      },
+      columns: includePassword
+        ? undefined
+        : {
+            password: false,
+          },
     })) as FindOneUser<T>;
   }
 
