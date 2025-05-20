@@ -30,6 +30,18 @@ export class UsersRepository {
     })) as FindOneUser<T>;
   }
 
+  async validateSave(
+    email: string,
+    username: string
+  ): Promise<UserWithoutPassword | undefined> {
+    return await this.dbService.database.query.users.findFirst({
+      where: or(eq(users.email, email), eq(users.username, username)),
+      columns: {
+        password: false,
+      },
+    });
+  }
+
   async findByKeyword(keyword: string): Promise<UserWithoutPassword[]> {
     return await this.dbService.database.query.users.findMany({
       where: or(
