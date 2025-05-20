@@ -1,4 +1,5 @@
 /** @notice Library imports */
+import { relations } from "drizzle-orm";
 import {
   pgTable,
   text,
@@ -7,6 +8,8 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+/// Local imports
+import { blogs } from "./blogs.entity";
 
 export const users = pgTable(
   "users",
@@ -32,3 +35,7 @@ export const users = pgTable(
     uniqueIndex("userUsernameUniqueIndex").on(table.username),
   ]
 );
+
+export const userRelations = relations(users, ({ many }) => ({
+  blogs: many(blogs),
+}));
