@@ -1,12 +1,12 @@
 /** @notice Library imports */
+import { JwtService } from "@nestjs/jwt";
 import { Test, TestingModule } from "@nestjs/testing";
 import { ConflictException, UnauthorizedException } from "@nestjs/common";
 /// Local imports
 import { AuthService } from "../auth.service";
 import { UsersRepository } from "@app/users/users.repo";
-import { LoginUserPayload, NewUserPayload, User } from "@app/users/users.type";
-import { JwtService } from "@nestjs/jwt";
 import { EnvironmentService } from "@app/config/env/env.service";
+import { LoginUserPayload, NewUserPayload, User } from "@app/users/users.type";
 
 describe("AuthService", () => {
   let authService: AuthService;
