@@ -10,6 +10,22 @@ import { Blog, BlogWithAuthor, NewBlogPayload } from "./blogs.type";
 export class BlogsRepository {
   constructor(private dbService: DatabaseService) {}
 
+  async findById(blogId: string): Promise<BlogWithAuthor[]> {
+    return await this.dbService.database.query.blogs.findMany({
+      where: eq(blogs.id, blogId),
+      columns: {
+        author: false,
+      },
+      with: {
+        author: {
+          columns: {
+            password: false,
+          },
+        },
+      },
+    });
+  }
+
   async findByAuthor(authorId: string): Promise<BlogWithAuthor[]> {
     return await this.dbService.database.query.blogs.findMany({
       where: eq(blogs.author, authorId),
