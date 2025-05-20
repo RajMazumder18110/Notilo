@@ -8,6 +8,7 @@ export type NewUserPayload = Omit<
   User,
   "id" | "bio" | "createdAt" | "updatedAt"
 >;
+export type LoginUserPayload = Pick<User, "email" | "password">;
 
 export type FindOneUser<T extends boolean> = T extends true | undefined
   ? User | undefined
