@@ -1,10 +1,10 @@
 /** @notice Library imports */
+import { UnauthorizedException } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
 /// Local imports
 import { AuthService } from "../auth.service";
 import { UsersRepository } from "@app/users/users.repo";
 import { LoginUserPayload, NewUserPayload, User } from "@app/users/users.type";
-import { UnauthorizedException } from "@nestjs/common";
 
 describe("AuthService", () => {
   let authService: AuthService;
